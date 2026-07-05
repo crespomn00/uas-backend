@@ -1,0 +1,69 @@
+html,body{
+    height: 100%;
+    margin: 0;
+}
+
+.container{
+  display: flex;
+  place-items: center;
+  height: 100vh;
+}
+
+.tombol{
+    background-color: green;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+    display: inline-block;
+    transition: background-color 0.3s;
+    align-items: center;
+}
+
+.tombol-beranda{
+    background-color: grey;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.tombol-logout{
+    background-color: red;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: sans-serif;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+p {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h2 {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.nav-tombol{
+    text-align: center;
+}
+
+.nav-tombol-admin{
+    text-align: center;
+}
+
+.tambah-produk{
+    text-align: center;
+    align-items: center;
+}
+
+
