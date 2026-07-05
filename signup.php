@@ -8,7 +8,6 @@
       body {
         font-family: Arial, sans-serif;
         margin: 20px;
-        margin-top: 350px;
       }
       .card {
         background-color: #f9f9f9;
@@ -35,7 +34,11 @@
   <body>
     <div class="card">
       <h1>Form Signup</h1>
-      <form action="actions/proses_signin.php" method="post" id="form">
+      <form action="proses/proses_signup.php" method="post" id="form">
+        <div class="textbox">
+          <label>Nama:</label>
+          <input type="text" name="nama" />
+        </div>
         <div class="textbox">
           <label>Username:</label>
           <input type="text" name="username" />
