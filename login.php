@@ -65,11 +65,11 @@
       <form action="proses/proses_login.php" method="post">
         <div class="textbox">
           <label>Username:</label>
-          <input type="text" name="username" required/>
+          <input type="text" name="username" />
         </div>
         <div class="textbox">
           <label>Password:</label>
-          <input type="password" name="password" required/>
+          <input type="password" name="password" />
         </div>
         <div class="all-button">
             <button class="tombol-login" type="submit">Login</button>
