@@ -1,18 +1,9 @@
 <?php
-session_start();
 
+require_once __DIR__ . '/../protected.php';
 require_once __DIR__ . '/../class/Barang.php';
 require_once __DIR__ . '/../class/Kategori.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
-    exit;
-}
-
-if (isset($_SESSION['role']) && $_SESSION['role'] !== 'pelanggan') {
-    header('Location: ../admin/dashboard.php');
-    exit;
-}
 
 $barang = new Barang();
 $kategoriObj = new Kategori();
@@ -499,7 +490,7 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
         <div class="logo">Epicenter <span>Music Store</span></div>
 
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Cari gitar, bass, drum, keyboard...">
+            <input type="text" id="searchInput" placeholder="Cari nama barang...">
         </div>
 
         <div class="nav-actions">
@@ -519,7 +510,7 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
                 modern, dan mudah digunakan oleh pelanggan.
             </p>
         </div>
-        <div class="hero-badge">Music Store</div>
+        <div class="hero-badge">Selamat datang, <?= e($_SESSION['user']); ?></div>
     </section>
 
     <section class="category-wrapper">
