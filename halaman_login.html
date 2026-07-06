@@ -1,71 +1,144 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to Epicenter Music Store</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-        margin-top: 350px;
-      }
-      .card {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        max-width: 700px;
-        margin: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-      form {
-        width: 70%;
-      }
-      .tombol-login {
-        background-color: rgb(10, 255, 10);
-        color: black;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-family: sans-serif;
-        display: inline-block;
-        transition: background-color 0.3s;
-        align-items: center;
-      }
-      .tombol-sign-in {
-        background-color: rgb(51, 75, 255);
-        color: black;
-        padding: 12px 24px;
-        text-decoration: none;
-        border-radius: 5px;
-        font-family: sans-serif;
-        display: inline-block;
-        transition: background-color 0.3s;
-        align-items: center;
-      }
-      .h1{
-        text-align: center;
-      }
-      .all-button{
-        text-align: center;
+<!DOCTYPE html>
+<html lang="id">
+<head>
 
-      }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h1>Selamat Datang di Toko Musik Epicenter</h1>
-      <p style="margin-top: 0px;">Harap Login Terlebih Dahulu Sebelum Memasuki Beranda Toko!</p>
-      <form method="post" id="form">
-        <div class="all-button">
-            <button class="tombol-login"><a href="login.php">Login</button>
-            <button class="tombol-sign-in"><a href="signup.php">Signup</button>
-        </div>
-      </form>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Toko Musik Epicenter</title>
+
+<style>
+
+  *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Segoe UI, sans-serif;
+  }
+  body{
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#000000,#2d2d2d,#ffffff);
+      padding:30px;
+  }
+  .container{
+
+      width:100%;
+      max-width:1100px;
+      background:rgba(255,255,255,.93);
+      border-radius:25px;
+      padding:70px 60px;
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
+      backdrop-filter:blur(8px);
+
+  }
+  .logo{
+      width:90px;
+      height:90px;
+      margin:auto;
+      border-radius:50%;
+      background:#000;
+      color:#fff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-size:40px;
+      margin-bottom:25px;
+  }
+  h1{
+      font-size:55px;
+      color:#111;
+      margin-bottom:20px;
+  }
+  span{
+      color:#444;
+  }
+  p{
+      font-size:22px;
+      color:#555;
+      line-height:1.7;
+      margin-bottom:45px;
+  }
+  .button-group{
+      display:flex;
+      justify-content:center;
+      gap:20px;
+      flex-wrap:wrap;
+  }
+  .btn{
+      text-decoration:none;
+      width:180px;
+      padding:17px;
+      border-radius:12px;
+      font-size:18px;
+      font-weight:bold;
+      transition:.35s;
+  }
+  .login{
+      background:#111;
+      color:white;
+  }
+  .signup{
+      border:2px solid #111;
+      color:#111;
+  }
+  .login:hover{
+      background:#333;
+      transform:translateY(-6px);
+      box-shadow:0 12px 25px rgba(0,0,0,.3);
+  }
+  .signup:hover{
+      background:#111;
+      color:white;
+      transform:translateY(-6px);
+      box-shadow:0 12px 25px rgba(0,0,0,.3);
+  }
+  .footer{
+      margin-top:50px;
+      color:#777;
+      font-size:15px;
+  }
+
+  @media(max-width:768px){
+
+  .container{
+      padding:40px 25px;
+  }
+
+  h1{
+      font-size:38px;
+  }
+
+  p{
+      font-size:18px;
+  }
+
+  .btn{
+      width:100%;
+  }
+  }
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">🎵</div>
+    <h1>Selamat Datang di <span>Epicenter Music Store</span></h1>
+    <p>
+    Temukan berbagai alat musik berkualitas dengan harga terbaik.
+    Silakan login terlebih dahulu untuk mengakses dashboard dan melakukan transaksi.
+    </p>
+
+    <div class="button-group">
+      <a href="login.php" class="btn login">Login</a>
+      <a href="signup.php" class="btn signup">Sign Up</a>
     </div>
-  </body>
+    <div class="footer">
+    © 2026 Epicenter Music Store • All Rights Reserved
+    </div>
+  </div>
+</body>
 </html>
