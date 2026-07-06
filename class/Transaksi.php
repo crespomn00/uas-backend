@@ -228,5 +228,15 @@ class Transaksi extends Database {
         }
     }
 
+    public function countTransaksi() {
+        $query = "SELECT COUNT(*) AS total_transaksi 
+                FROM $this->table";
+
+        $result = $this->conn->query($query);
+        $data = $result->fetch_assoc();
+
+        return $data['total_transaksi'];
+    }
+
 }
 ?>

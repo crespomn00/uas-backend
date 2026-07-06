@@ -374,9 +374,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <i class="fa-solid fa-house"></i>
                     <span><a href="dashboard.php" style="text-decoration:none; color: white;">Dashboard</></span>
                 </li>
-                <li>
+                <li class="active">
                     <i class="fa-solid fa-box"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Barang</a></span>
+                    <span>Data Barang</span>
                 </li>
                 <li>
                     <i class="fa-solid fa-layer-group"></i>

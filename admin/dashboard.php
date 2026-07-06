@@ -2,11 +2,17 @@
 require_once __DIR__ . '/../protected.php';
 require_once '../class/Barang.php';
 require_once '../class/User.php';
+require_once '../class/Kategori.php';
+require_once '../class/Transaksi.php';
 
 $barang = new Barang();
 $user = new User();
+$kategori = new Kategori();
+$transaksi = new Transaksi();
 $total_barang = $barang->countBarang();
 $total_pelanggan = $user->countPelanggan();
+$total_kategori = $kategori->countKategori();
+$total_transaksi = $transaksi->countTransaksi();
 ?>
 <!DOCTYPE html>
 <html lang="id">
@@ -282,7 +288,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <li>
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
+                    <span><a href="kelola_transaksi.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
                 </li>
 
                 <form action="../proses/proses_logout.php" method="post">
@@ -313,7 +319,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         </div>
         <div class="card">
             <i class="fa-solid fa-layer-group"></i>
-            <h1>18</h1>
+            <h1><?= $total_kategori ?></h1>
             <p>Kategori</p>
         </div>
         <div class="card">
@@ -323,7 +329,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         </div>
         <div class="card">
             <i class="fa-solid fa-cart-shopping"></i>
-            <h1>3.428</h1>
+            <h1><?= $total_transaksi ?></h1>
             <p>Transaksi</p>
         </div>
     </section>
