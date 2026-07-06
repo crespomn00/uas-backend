@@ -266,7 +266,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </li>
                 <li>
                     <i class="fa-solid fa-layer-group"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
+                    <span><a href="data-kategori.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
                 </li>
                 <li>
                     <i class="fa-solid fa-users"></i>
