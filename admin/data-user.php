@@ -1,20 +1,20 @@
+<!DOCTYPE html>
 <?php
 require_once __DIR__ . '/../protected.php';
-require_once '../class/Barang.php';
 require_once '../class/User.php';
 
-$barang = new Barang();
+function e($value)
+{
+    return htmlspecialchars((string) $value, ENT_QUOTES, 'UTF-8');
+}
+
 $user = new User();
-$total_barang = $barang->countBarang();
 $total_pelanggan = $user->countPelanggan();
 ?>
-<!DOCTYPE html>
 <html lang="id">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard Admin</title>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
@@ -201,6 +201,97 @@ td{
     border-radius:20px;
 }
 
+.wrapper {
+            width: 100%;
+            gap: 20px;
+        }
+        .card-form {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            min-height: 600px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+        .card-table {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            height: 600px;
+            margin: auto;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            width: 100%;
+        }
+        .textbox {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        input, textarea, select {
+            padding: 12px 12px;
+            box-sizing: border-box;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            outline: none;
+        }
+        .table-container {
+            width: 100%;
+            height: 500px;
+            overflow-y: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            font-size: 12pt;
+            font-weight: 300;
+            line-height: 1.5;
+            vertical-align: top;
+        }
+        th {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #000000;
+            color: white;
+        }
+        .danger {
+            color: red;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+        .preview {
+            max-width: 120px;
+            height: auto;
+            margin-top: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
 /* RESPONSIVE */
 
 @media(max-width:1000px){
@@ -245,6 +336,7 @@ header{
     align-items:flex-start;
     gap:20px;
 }
+
 }
 </style>
 
@@ -263,9 +355,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 <h2>ADMIN</h2>
             </div>
             <ul>
-                <li class="active">
+                <li>
                     <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
+                    <span><a href="dashboard.php" style="text-decoration:none; color: white;">Dashboard</></span>
                 </li>
                 <li>
                     <i class="fa-solid fa-box"></i>
@@ -273,18 +365,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </li>
                 <li>
                     <i class="fa-solid fa-layer-group"></i>
-                    <span><a href="data-kategori.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
+                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
                 </li>
-                <li>
+                <li class="active">
                     <i class="fa-solid fa-users"></i>
-                    <span><a href="data-user.php" style="text-decoration: none; color: white;">Data User</a></span>
+                    <span>Data User</span>
                 </li>
 
                 <li>
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
                 </li>
-
                 <form action="../proses/proses_logout.php" method="post">
                     <button type="submit" class="logout" style="margin-left: 30px; background: red;">Logout</button>
                 </form>
@@ -295,8 +386,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <main>
     <header>
         <div>
-            <h1>Dashboard</h1>
-            <p>Selamat datang kembali, Admin.</p>
+            <h1>LIST PELANGGAN</h1>
         </div>
         <div class="profile">
             <i class="fa-solid fa-bell"></i>
@@ -308,28 +398,56 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <section class="cards">
         <div class="card">
             <i class="fa-solid fa-box"></i>
-            <h1><?= $total_barang ?></h1>
-            <p>Total Barang</p>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-layer-group"></i>
-            <h1>18</h1>
-            <p>Kategori</p>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-users"></i>
             <h1><?= $total_pelanggan ?></h1>
-            <p>Pelanggan</p>
-        </div>
-        <div class="card">
-            <i class="fa-solid fa-cart-shopping"></i>
-            <h1>3.428</h1>
-            <p>Transaksi</p>
+            <p>Total Pelanggan</p>
         </div>
     </section>
-    </main>
+
+    <!-- Table -->
+
+    <section class="table-card">
+        <div class="wrapper">
+
+        <div class="card-table">
+            <h2>Data Pelanggan</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nama</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Dibuat</th>
+                    </thead>
+                    <tbody>
+                        <?php
+                        $dataUser = $user->readAllPelanggan();
+
+                        if ($dataUser && $dataUser->num_rows > 0) {
+                            while ($row = $dataUser->fetch_assoc()) {
+                                echo "
+                                <tr>
+                                    <td>" . e($row['id_user']) . "</td>
+                                    <td>" . e($row['nama_user']) . "</td>
+                                    <td>" . e($row['username']) . "</td>
+                                    <td>" . e($row['email']) . "</td>
+                                    <td>" . e($row['created_at'] ?? '-') . "</td>
+                                </tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='5'>Belum ada data</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-<script src="js/script.js"></script>
+
+        </section>
+    </main>
+</div>
 
 </body>
 </html>

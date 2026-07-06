@@ -43,5 +43,16 @@ class Barang extends Database {
         $stmt->bind_param("i", $id_barang);
         return $stmt->execute();
     }
+
+    // COUNT PELANGGAN
+    public function countBarang() {
+        $query = "SELECT COUNT(*) AS total_barang 
+                FROM $this->table";
+
+        $result = $this->conn->query($query);
+        $data = $result->fetch_assoc();
+
+        return $data['total_barang'];
+    }
 }
 ?>
