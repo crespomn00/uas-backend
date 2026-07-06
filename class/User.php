@@ -59,5 +59,17 @@ class User extends Database {
         $stmt->bind_param("i", $id_user);
         return $stmt->execute();
     }
+
+    // COUNT PELANGGAN
+    public function countPelanggan() {
+        $query = "SELECT COUNT(*) AS total_pelanggan 
+                FROM $this->table 
+                WHERE role = 'pelanggan'";
+
+        $result = $this->conn->query($query);
+        $data = $result->fetch_assoc();
+
+        return $data['total_pelanggan'];
+    }
 }
 ?>

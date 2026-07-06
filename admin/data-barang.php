@@ -10,6 +10,7 @@ function e($value)
 }
 
 $barang = new Barang();
+$total_barang = $barang->countBarang();
 $editData = null;
 
 if (isset($_GET['edit'])) {
@@ -383,7 +384,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </li>
                 <li>
                     <i class="fa-solid fa-users"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data User</a></span>
+                    <span><a href="data-user.php" style="text-decoration: none; color: white;">Data User</a></span>
                 </li>
 
                 <li>
@@ -412,7 +413,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
     <section class="cards">
         <div class="card">
             <i class="fa-solid fa-box"></i>
-            <h2>1.254</h2>
+            <h1><?= $total_barang ?></h1>
             <p>Total Barang</p>
         </div>
     </section>
