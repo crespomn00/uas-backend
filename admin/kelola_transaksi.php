@@ -90,61 +90,96 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
     <title>Kelola Transaksi Admin</title>
 
     <style>
+         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Poppins,sans-serif;
         }
 
         body {
             background: #f5f5f5;
             color: #111;
         }
-
-        .navbar {
-            width: 100%;
-            background: #fff;
-            border-bottom: 1px solid #e5e5e5;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        .navbar-inner {
-            max-width: 1200px;
-            margin: auto;
-            padding: 14px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 22px;
-            font-weight: 800;
-            text-decoration: none;
-            color: #111;
-        }
-
-        .logo span {
-            color: #555;
-        }
-
-        .nav-btn {
-            text-decoration: none;
-            background: #111;
-            color: #fff;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 700;
-        }
-
         .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 26px 20px 50px;
+            display:flex;
+            min-height:100vh;
+        }
+
+        .sidebar{
+            width:250px;
+            background:#111;
+            color:#fff;
+            padding:30px 0;
+            display:flex;
+            flex-direction:column;
+        }
+
+        .logo{
+            text-align:center;
+            margin-bottom:40px;
+        }
+
+        .logo h2{
+            letter-spacing:4px;
+        }
+
+        .sidebar ul{
+            list-style:none;
+        }
+
+        .sidebar li{
+            padding:18px 30px;
+            display:flex;
+            gap:15px;
+            cursor:pointer;
+            transition:.3s;
+        }
+
+        .sidebar li:hover,
+        .sidebar .active{
+            background:#fff;
+            color:#111;
+        }
+
+        .logout{
+            margin-top:30px;
+            border-top:1px solid rgba(255,255,255,.15);
+        }
+
+
+        /* MAIN */
+        main{
+            flex:1;
+            padding:40px;
+        }
+
+        /* HEADER */
+        header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:40px;
+        }
+
+        .profile{
+            display:flex;
+            align-items:center;
+            gap:20px;
+        }
+
+        .avatar{
+            width:45px;
+            height:45px;
+            background:#111;
+            color:white;
+            border-radius:50%;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            font-weight:bold;
+
         }
 
         .page-header {
@@ -309,6 +344,19 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
             flex-wrap: wrap;
         }
 
+        button{
+            background:#111;
+            color:white;
+            border:none;
+            padding:12px 18px;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#333;
+        }
+
         .btn {
             border: none;
             border-radius: 9px;
@@ -430,25 +478,77 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
             .transaction-top {
                 flex-direction: column;
             }
+
+            .sidebar{
+                width:100%;
+                padding:20px;
+            }
+
+            .sidebar ul{
+                display:flex;
+                flex-wrap:wrp;
+                justify-content:center;
+                gap:10px;
+            }
+
+            .sidebar li{
+                padding:10px 15px;
+                border-radius:8px;
+            }
         }
     </style>
+    <link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+/>
 </head>
 
 <body>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>ADMIN</h2>
+            </div>
+            <ul>
+                <li>
+                    <i class="fa-solid fa-house"></i>
+                    <span><a href="dashboard.php" style="text-decoration:none; color: white;">Dashboard</a></span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-box"></i>
+                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Barang</a></span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-layer-group"></i>
+                    <span><a href="data-kategori.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-users"></i>
+                    <span><a href="data-user.php" style="text-decoration: none; color: white;">Data User</a></span>
+                </li>
 
-<header class="navbar">
-    <div class="navbar-inner">
-        <a href="dashboard.php" class="logo">Admin<span> Musik</span></a>
-        <a href="../logout.php" class="nav-btn">Logout</a>
-    </div>
-</header>
+                <li>
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span><a href="kelola_transaksi.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
+                </li>
 
-<main class="container">
+                <form action="../proses/proses_logout.php" method="post">
+                    <button type="submit" class="logout" style="margin-left: 30px; background: red;">Logout</button>
+                </form>
+            </ul>
+        </aside>
 
-    <section class="page-header">
-        <h1>Kelola Transaksi Pelanggan</h1>
-        <p>Validasi pembayaran pelanggan. Jika pesanan dinyatakan lunas, stok barang otomatis dikurangi sesuai jumlah pembelian.</p>
-    </section>
+<main>
+    <header>
+    <div>
+        <h1>Data Transaksi</h1>
+            <p>Halaman lihat data transaksi</p>
+        </div>
+    <div class="profile">
+            <i class="fa-solid fa-bell"></i>
+            <div class="avatar">A</div>
+        </div>
+    </header>
 
     <?php
         $totalTransaksi = count($items);

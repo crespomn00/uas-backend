@@ -11,13 +11,13 @@ if (isset($_GET['hapus'])){
         echo "
         <script>
             alert('Data Berhasil Dihapus!');
-            window.location.href='../form_kategori.php';
+            window.location.href='../admin/data-kategori.php';
         </script>";
     } else {
         echo "
         <script>
             alert('Data Gagal Dihapus!');
-            window.location.href='../form_kategori.php';
+            window.location.href='../admin/data-kategori.php';
         <script>";
     }
 } else{
