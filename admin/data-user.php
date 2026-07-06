@@ -365,7 +365,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                 </li>
                 <li>
                     <i class="fa-solid fa-layer-group"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
+                    <span><a href="data-kategori.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
                 </li>
                 <li class="active">
                     <i class="fa-solid fa-users"></i>
@@ -374,7 +374,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                 <li>
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
+                    <span><a href="kelola_transaksi.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
                 </li>
                 <form action="../proses/proses_logout.php" method="post">
                     <button type="submit" class="logout" style="margin-left: 30px; background: red;">Logout</button>

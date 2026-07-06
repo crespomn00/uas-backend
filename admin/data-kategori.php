@@ -349,15 +349,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             <ul>
                 <li>
                     <i class="fa-solid fa-house"></i>
-                    <span>Dashboard</span>
+                    <span><a href="dashboard.php" style="text-decoration: none; color: white;">Dashboard</a></span>
                 </li>
                 <li>
                     <i class="fa-solid fa-box"></i>
                     <span><a href="data-barang.php" style="text-decoration: none; color: white;">Data Barang</a></span>
                 </li>
-                <li>
+                <li class="active">
                     <i class="fa-solid fa-layer-group"></i>
-                    <span><a href="data-kategori.php" style="text-decoration: none; color: white;">Data Kategori</a></span>
+                    <span>Data Kategori</span>
                 </li>
                 <li>
                     <i class="fa-solid fa-users"></i>

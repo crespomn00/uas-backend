@@ -1,17 +1,6 @@
 <?php
-session_start();
-
+require_once __DIR__ . '/../protected.php';
 require_once __DIR__ . '/../class/Transaksi.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
-    exit;
-}
-
-if (isset($_SESSION['role']) && $_SESSION['role'] !== 'admin') {
-    header('Location: ../pelanggan/beranda.php');
-    exit;
-}
 
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -527,9 +516,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <span><a href="data-user.php" style="text-decoration: none; color: white;">Data User</a></span>
                 </li>
 
-                <li>
+                <li class="active">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
-                    <span><a href="kelola_transaksi.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
+                    <span>Data Transaksi</span>
                 </li>
 
                 <form action="../proses/proses_logout.php" method="post">

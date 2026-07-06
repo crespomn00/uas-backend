@@ -38,5 +38,16 @@ public function delete($id){
     $stmt->bind_param("i", $id);
     return $stmt->execute();
 }
+
+// COUNT Kategori
+    public function countKategori() {
+        $query = "SELECT COUNT(*) AS total_kategori 
+                FROM $this->table";
+
+        $result = $this->conn->query($query);
+        $data = $result->fetch_assoc();
+
+        return $data['total_kategori'];
+    }
 }
 ?>
