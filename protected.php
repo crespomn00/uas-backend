@@ -18,7 +18,7 @@ $user_role = $_SESSION['role'] ?? '';
 $current_page = basename($_SERVER['PHP_SELF']);
 
 if ($user_role === 'admin') {
-    $allowed_editor_pages = ['index.php','Transaksi_form.php'];
+    $allowed_editor_pages = ['index.php','form_barang.php', 'form_kategori.php'];
     if (!in_array($current_page, $allowed_editor_pages)) {
         // Jika ketahuan mengakses halaman lain, arahkan ke halaman transaksi atau beri pesan error
         header("Location: Transaksi_form.php"); 
