@@ -18,19 +18,19 @@ $user_role = $_SESSION['role'] ?? '';
 $current_page = basename($_SERVER['PHP_SELF']);
 
 if ($user_role === 'admin') {
-    $allowed_editor_pages = ['index.php','form_barang.php', 'form_kategori.php'];
+    $allowed_editor_pages = ['dashboard.php','data-barang.php'];
     if (!in_array($current_page, $allowed_editor_pages)) {
         // Jika ketahuan mengakses halaman lain, arahkan ke halaman transaksi atau beri pesan error
-        header("Location: Transaksi_form.php"); 
+        header("Location: admin/dashboard.php"); 
         exit();
     }
 }
 elseif ($user_role === 'pelanggan') {
-    // Viewer HANYA boleh mengakses index.php dan User.php
-    $allowed_viewer_pages = ['index.php', 'Transaksi_user.php'];
+    // Pelanggan HANYA boleh mengakses halaman beranda dan riwayat transaksi
+    $allowed_viewer_pages = ['beranda.php', 'riwayat_transaksi.php'];
     
     if (!in_array($current_page, $allowed_viewer_pages)) {
-        header("Location: Transaksi_user.php");
+        header("Location: pelanggan/beranda.php");
         exit();
     }
 }

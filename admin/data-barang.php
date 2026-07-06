@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//require_once '../protected.php';
+require_once __DIR__ . '/../protected.php';
 require_once '../class/Barang.php';
 require_once '../class/Kategori.php';
 

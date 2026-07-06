@@ -1,17 +1,6 @@
 <?php
-session_start();
-
+require_once __DIR__ . '/../protected.php';
 require_once __DIR__ . '/../class/Transaksi.php';
-
-if (!isset($_SESSION['user_id'])) {
-    header('Location: ../login.php');
-    exit;
-}
-
-if (isset($_SESSION['role']) && $_SESSION['role'] !== 'pelanggan') {
-    header('Location: ../admin/dashboard.php');
-    exit;
-}
 
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -34,17 +23,6 @@ function e($value)
 function rupiah($angka)
 {
     return 'Rp ' . number_format((float) $angka, 0, ',', '.');
-}
-
-function metodePembayaran($kode)
-{
-    $data = [
-        '1' => 'Transfer Bank',
-        '2' => 'QRIS',
-        '3' => 'COD'
-    ];
-
-    return $data[(string) $kode] ?? 'Tidak diketahui';
 }
 
 function statusClass($status)
@@ -432,7 +410,7 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 
 <header class="navbar">
     <div class="navbar-inner">
-        <a href="beranda.php" class="logo">Nada<span>Musik</span></a>
+        <div class="logo">Epicenter <span>Music Store</span></div>
 
         <div class="nav-actions">
             <a href="beranda.php" class="nav-btn secondary">Katalog</a>
@@ -444,7 +422,7 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
 <main class="container">
 
     <section class="page-header">
-        <h1>Riwayat Transaksi</h1>
+        <h1>Riwayat Transaksi, <?= e($_SESSION['user']); ?></h1>
         <p>Lihat daftar pesanan Anda dan batalkan pesanan yang masih berstatus menunggu konfirmasi.</p>
     </section>
 
@@ -502,7 +480,7 @@ $placeholderImage = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg
                 $qty = (int) $row['qty'];
                 $hargaSatuan = (float) $row['harga_satuan'];
                 $totalBayar = (float) $row['total_bayar'];
-                $metode = metodePembayaran($row['metode_pembayaran']);
+                $metode = $row['metode_pembayaran'];
                 $status = strtolower((string) $row['status_transaksi']);
                 $bisaDibatalkan = $status === 'pending';
 

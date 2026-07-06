@@ -1,3 +1,6 @@
+<?php
+require_once __DIR__ . '/../protected.php';
+?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
