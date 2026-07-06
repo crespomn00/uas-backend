@@ -36,6 +36,10 @@
       <h1>Form Signup</h1>
       <form action="proses/proses_signup.php" method="post" id="form">
         <div class="textbox">
+          <label>Email:</label>
+          <input type="text" name="email" />
+        </div>
+        <div class="textbox">
           <label>Nama:</label>
           <input type="text" name="nama" />
         </div>

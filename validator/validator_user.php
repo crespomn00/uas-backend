@@ -7,6 +7,16 @@ class FormValidatorUser {
         $this->data = $data;
     }
 
+    public function validateEmail() {
+        $email = trim($this->data['email'] ?? '');
+        if (empty($email)) {
+            $this->errors['email'] = 'Email wajib diisi.';
+        } elseif (strlen($email) < 4) {
+            $this->errors['email'] = 'Email Harus Valid!.';
+        }
+    }
+
+
     public function validateUsername() {
         $username = trim($this->data['username'] ?? '');
         if (empty($username)) {
@@ -36,6 +46,7 @@ class FormValidatorUser {
     }
 
     public function validateAll() {
+        $this->validateEmail();
         $this->validateUsername();
         $this->validatePassword();
         $this->validateConfirmPassword();

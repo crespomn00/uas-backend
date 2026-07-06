@@ -6,10 +6,10 @@ class User extends Database {
     private $table = "tabel_user";
 
     // CREATE
-    public function create($nama, $username, $password, $role) {
-        $query = "INSERT INTO $this->table (nama_user, username, password, role) VALUES (?, ?, ?, ?)";
+    public function create($email, $nama, $username, $password, $role) {
+        $query = "INSERT INTO $this->table (email, nama_user, username, password, role) VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssss", $nama, $username, $password, $role);
+        $stmt->bind_param("sssss", $email, $nama, $username, $password, $role);
         return $stmt->execute();
     }
 
