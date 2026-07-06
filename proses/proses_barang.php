@@ -12,13 +12,13 @@ if (isset($_GET['hapus'])) {
         echo "
         <script>
             alert('Data berhasil dihapus!');
-            window.location.href='../form_barang.php';
+            window.location.href='../admin/data-barang.php';
         </script>";
     } else {
         echo "
         <script>
             alert('Data gagal dihapus!');
-            window.location.href='../form_barang.php';
+            window.location.href='../admin/data-barang.php';
         </script>";
     }
     exit;
