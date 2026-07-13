@@ -4,6 +4,7 @@ require_once __DIR__ . '/../config/Database.php';
 class Transaksi extends Database {
 
     private $table = "tabel_transaksi";
+    private $table_laporan = "tabel_laporan_penjualan";
 
     // CREATE
     public function create($id_user, $id_barang, $qty, $harga_satuan, $alamat, $no_hp, $total_bayar, $metode_pembayaran, $status_transaksi, $bukti_pembayaran) {
@@ -142,13 +143,18 @@ class Transaksi extends Database {
             $query = "
                 SELECT 
                     t.id_transaksi,
+                    t.id_user,
                     t.id_barang,
                     t.qty,
+                    t.total_bayar,
                     t.status_transaksi,
                     t.bukti_pembayaran,
-                    b.stok
+                    b.nama_barang,
+                    b.stok,
+                    u.nama_user
                 FROM $this->table t
                 INNER JOIN tabel_barang b ON t.id_barang = b.id_barang
+                INNER JOIN tabel_user u ON t.id_user = u.id_user
                 WHERE t.id_transaksi = ?
                 FOR UPDATE
             ";
@@ -171,8 +177,12 @@ class Transaksi extends Database {
                 throw new Exception("Bukti pembayaran belum tersedia.");
             }
 
+            $id_user = (int) $data['id_user'];
+            $nama_user = (string) $data['nama_user'];
             $id_barang = (int) $data['id_barang'];
+            $nama_barang = (string) $data['nama_barang'];
             $qty = (int) $data['qty'];
+            $total_bayar = (float) $data['total_bayar'];
             $stok = (int) $data['stok'];
 
             if ($stok < $qty) {
@@ -209,6 +219,19 @@ class Transaksi extends Database {
 
             if ($stmtUpdateStatus->affected_rows < 1) {
                 throw new Exception("Gagal mengubah status transaksi.");
+            }
+
+            $querygenerateLaporan = "
+                INSERT INTO $this->table_laporan 
+                (id_user, nama_user, nama_barang, qty, total_harga) VALUES (?, ?, ?, ?, ?)
+            ";
+
+            $stmtCreateLaporan = $this->conn->prepare($querygenerateLaporan);
+            $stmtCreateLaporan->bind_param("issid", $id_user, $nama_user, $nama_barang, $qty, $total_bayar);
+            $stmtCreateLaporan->execute();
+
+            if ($stmtCreateLaporan->affected_rows < 1) {
+                throw new Exception("Gagal membuat laporan.");
             }
 
             $this->conn->commit();

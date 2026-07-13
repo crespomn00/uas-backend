@@ -376,6 +376,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                     <span><a href="kelola_transaksi.php" style="text-decoration: none; color: white;">Data Transaksi</a></span>
                 </li>
+
+                <li>
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                    <span><a href="laporan_penjualan.php" style="text-decoration: none; color: white;">Laporan Penjualan</a></span>
+                </li>
+                
                 <form action="../proses/proses_logout.php" method="post">
                     <button type="submit" class="logout" style="margin-left: 30px; background: red;">Logout</button>
                 </form>
